@@ -227,46 +227,7 @@ curl -X POST http://localhost:8000/api/architecture \
 }
 ```
 
----
 
-## 🚢 Deployment
-
-### Render (recommended for FastAPI)
-
-1. Push your code to GitHub
-2. Go to [render.com](https://render.com) → **New Web Service**
-3. Connect your repository
-4. Set build command: `pip install -r requirements.txt`
-5. Set start command: `uvicorn main:app --host 0.0.0.0 --port $PORT`
-6. Add environment variable: `GEMINI_API_KEY=your_key`
-
-### Railway
-
-```bash
-npm install -g @railway/cli
-railway login
-railway init
-railway up
-railway variables set GEMINI_API_KEY=your_key
-```
-
-### Docker
-
-```dockerfile
-FROM python:3.11-slim
-WORKDIR /app
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-COPY . .
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
-```
-
-```bash
-docker build -t hackathon-api .
-docker run -p 8000:8000 --env-file .env hackathon-api
-```
-
----
 
 ## 🛠️ Tech Stack
 
